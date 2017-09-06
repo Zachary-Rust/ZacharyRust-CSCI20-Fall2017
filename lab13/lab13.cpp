@@ -61,7 +61,6 @@ int main ()
     cout << "total deaths: " << totalDeaths << endl;
     cout << "total immigrants: " << totalImmigrants << endl;
     cout << "current population : " << currentPopulation << endl;
-    cout << currentPopulation + 2269636<<endl;
     
     futurePopulation = currentPopulation + totalBirths + totalImmigrants - totalDeaths;
     
