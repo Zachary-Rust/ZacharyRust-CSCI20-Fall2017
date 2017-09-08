@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+//Zachary Rust
+//09/05/2017
+//Determines most efficient change for amount that is input by user
 int main ()
 {
     int totalMoney = 0;
@@ -19,7 +22,7 @@ int main ()
     cout << endl;
     
     quarters = totalMoney / 25;
-    moneyLeft = totalMoney % 25;
+    moneyLeft %= 25;
     
     dimes = moneyLeft / 10;
     moneyLeft = moneyLeft % 10;
