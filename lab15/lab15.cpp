@@ -16,6 +16,18 @@ int main()
     string fourthWord = "wack";
     string fifthWord = "mac n' cheese";
     
+    cout << "Enter an adjective: ";
+    cin >> firstWord;
+    cout << "Enter a verb: ";
+    cin >> secondWord;
+    cout << "Enter an adjective: ";
+    cin >> thirdWord;
+    cout << "Enter an adjective: ";
+    cin >> fourthWord;
+    cout << "Enter a food: ";
+    cin >> fifthWord;
+    cout << endl;
+    
     cout << "Our school cafeteria has really " << firstWord << " food." << endl;
     cout << "Just thinking about it makes my stomach " << secondWord << "." << endl;
     cout << "The spaghetti is " << thirdWord << "." << endl;
