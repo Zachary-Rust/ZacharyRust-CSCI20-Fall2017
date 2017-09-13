@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+//struct to hold portfolio information
 struct portfolio {
     string stockName;
     char sectorName;
@@ -11,6 +12,9 @@ struct portfolio {
 
 int main()
 {
+    //portfolio information obtained
+    
+    //portfolio 1
     portfolio portfolio1;
     
     cout << "Enter first stock name: ";
@@ -25,6 +29,7 @@ int main()
     cout << "Enter the number of shares owned: ";
     cin >> portfolio1.numSharesOwned;
     
+    //portfoliio 2
     portfolio portfolio2;
     
     cout << "Enter second stock name: ";
@@ -39,6 +44,7 @@ int main()
     cout << "Enter the number of shares owned: ";
     cin >> portfolio2.numSharesOwned;
     
+    //portfolio 3
      portfolio portfolio3;
     
     cout << "Enter third stock name: ";
@@ -53,6 +59,7 @@ int main()
     cout << "Enter the number of shares owned: ";
     cin >> portfolio3.numSharesOwned;
     
+    //portfolio 4
      portfolio portfolio4;
     
     cout << "Enter fourth stock name: ";
@@ -67,11 +74,13 @@ int main()
     cout << "Enter the number of shares owned: ";
     cin >> portfolio4.numSharesOwned;
     
+    //Layour Table for Values
     cout << endl;
     cout << "Stock Name" << "    " << "No of Shares" << "    " << "Current Value" << "    " << "Total Value" << endl;
     cout << endl;
     cout << endl;
     
+    //Table information
     cout << portfolio1.stockName << "    " << portfolio1.numSharesOwned << "    " << portfolio1.currentSharePrice << "    $" << static_cast <double> (portfolio1.currentSharePrice * portfolio1.numSharesOwned) << endl;
     cout << endl;
     cout << portfolio2.stockName << "    " << portfolio2.numSharesOwned << "    " << portfolio2.currentSharePrice << "    $" << static_cast <double> (portfolio2.currentSharePrice * portfolio2.numSharesOwned) << endl;
@@ -84,6 +93,8 @@ int main()
 
 /*Results:
 
+Test 1:
+
 Stock Name    No of Shares    Current Value    Total Value
 
 
@@ -95,5 +106,16 @@ TSLA    50    375.64    $18782
 
 AAPL    5    145.91    $729.55
 
+Test 2:
 
+Stock Name    No of Shares    Current Value    Total Value
+
+
+TSLA    50    375.64    $18782
+
+WFC    1368    53.02    $72531.4
+
+Albertsn    542    34.39    $18639.4
+
+ACN    22    136.22    $2996.84
 */
