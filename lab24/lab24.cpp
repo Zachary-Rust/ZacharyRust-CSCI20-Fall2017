@@ -17,6 +17,8 @@ double KilogramsToPounds (double k)
     
     pounds = k * pounds_per_kilogram;
     cout << "Pounds: " << pounds << endl;
+    
+    return pounds;
 }
 
 //Converts pounds to kilograms
@@ -28,7 +30,7 @@ double PoundsToKilograms (double p)
     kilograms = p * kilograms_per_pound;
     cout << "Kilograms: " << kilograms << endl;
     
-    KilogramsToPounds(kilograms);
+    return kilograms;
 }
 
 /*This function swaps the two numbers if a is greater that b.
@@ -48,18 +50,17 @@ void SwapFunction (int& a, int& b)
     return;
 }
 
-//generates a random number between two numbers set by the user
-int RandNumGen ()
+//generates a random number between two numbers set by the user.  The function parameters are the numbers to find the random number between.
+int RandNumGen (int first_number, int last_number)
 {
-    int first_number = 1;
-    int last_number = 100;
     
     SwapFunction(first_number, last_number);
     int ran_num = 0;
     ran_num = (rand() % (last_number - first_number)) + first_number + 1;
     
     cout << "A random number between is " << ran_num << "." << endl;
-    PoundsToKilograms(ran_num);
+    
+    return ran_num;
 }
 
 int main ()
@@ -69,22 +70,28 @@ int main ()
     srand(time(0));
     
     //Calls function to generate random number
-    RandNumGen();
+    int pounds = RandNumGen(1, 100);
+    
+    //Converts the random number to kilograms
+    double kilograms = PoundsToKilograms(pounds);
+    
+    //Converts kilograms to pounds
+    KilogramsToPounds(kilograms);
     
     return 0;
 }
 /*
 Tests:
 
-A random number between is 85.
-Kilograms: 38.5553
-Pounds: 84.9999
+A random number between is 51.
+Kilograms: 23.1332
+Pounds: 51
 
-A random number between is 48.
-Kilograms: 21.7724
-Pounds: 48
+A random number between is 67.
+Kilograms: 30.3907
+Pounds: 66.9999
 
-A random number between is 48.
-Kilograms: 21.7724
-Pounds: 48
+A random number between is 31.
+Kilograms: 14.0614
+Pounds: 31
 */
