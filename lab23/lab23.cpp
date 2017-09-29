@@ -11,10 +11,11 @@ using namespace std;
 //swap function
 void SwapFunction (int& a, int& b)
 {
-    int c;
+    int c = 0;
     
     if (a > b)
     {
+        c = b;
         b = a;
         a = c;
     }
