@@ -51,14 +51,14 @@ void SwapFunction (int& a, int& b)
 //generates a random number between two numbers set by the user
 int RandNumGen ()
 {
-    int first_number = 5;
-    int last_number = 30;
+    int first_number = 1;
+    int last_number = 100;
     
     SwapFunction(first_number, last_number);
     int ran_num = 0;
     ran_num = (rand() % (last_number - first_number)) + first_number + 1;
     
-    cout << "A random number between " << first_number << " and " << last_number << " is " << ran_num << "." << endl;
+    cout << "A random number between is " << ran_num << "." << endl;
     PoundsToKilograms(ran_num);
 }
 
@@ -73,3 +73,18 @@ int main ()
     
     return 0;
 }
+/*
+Tests:
+
+A random number between is 85.
+Kilograms: 38.5553
+Pounds: 84.9999
+
+A random number between is 48.
+Kilograms: 21.7724
+Pounds: 48
+
+A random number between is 48.
+Kilograms: 21.7724
+Pounds: 48
+*/
