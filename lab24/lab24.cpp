@@ -51,17 +51,8 @@ void SwapFunction (int& a, int& b)
 //generates a random number between two numbers set by the user
 int RandNumGen ()
 {
-    int first_number = 0;
-    int last_number = 0;
-    
-    cout <<"Enter two numbers to find a random number between." << endl;
-    
-    //Get user input
-    cout << "Enter first number: ";
-    cin >> first_number;
-    
-    cout << "Enter second number: ";
-    cin >> last_number;
+    int first_number = 5;
+    int last_number = 30;
     
     SwapFunction(first_number, last_number);
     int ran_num = 0;
@@ -77,7 +68,7 @@ int main ()
     //sets random seep for random number generator
     srand(time(0));
     
-    //sets and outputs the random number with a function call
+    //Calls function to generate random number
     RandNumGen();
     
     return 0;
