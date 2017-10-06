@@ -1,4 +1,4 @@
-//Created By: Zachary Rust   
+//Created By: Zachary Rust
 //Created On: 10/4/2017      
 //This program takes a price of an item and gives all the taxes for multiple states, counties, and cities.
  
@@ -328,8 +328,95 @@ void Tax::SetPrice(double P)
 
 
 //Output after running the program.
-
 /*
+
+Input item price: $500
+
+California State Tax: $30.00
+Butte County Tax: $1.25
+Chico City Tax: $0.00
+Chico Special Tax: $5.00
+
+
+California State Tax: $30.00
+Butte County Tax: $1.25
+Paradise City Tax: $2.50
+Paradise Special Tax: $ 5.00
+
+California State Tax: $30.00
+Sacramento County Tax: $1.25
+Sacramento City Tax: $2.50
+Sacramento Special Tax: $7.50
+
+Nevada State Tax: $23.00
+Clark County Tax: $18.25
+Las Vegas City Tax: $0.00
+Las Vegas Special Tax: $0.00
+
+Arizona State Tax: $28.00
+Maricopa County Tax: $3.50
+Phoenix City Tax: $11.50
+Phoenix Special Tax: $0.00
+----------------------------------------------------------------
+
+Input item price: $23
+
+California State Tax: $1.38
+Butte County Tax: $0.06
+Chico City Tax: $0.00
+Chico Special Tax: $0.23
+
+
+California State Tax: $1.38
+Butte County Tax: $0.06
+Paradise City Tax: $0.12
+Paradise Special Tax: $ 0.23
+
+California State Tax: $1.38
+Sacramento County Tax: $0.06
+Sacramento City Tax: $0.12
+Sacramento Special Tax: $0.34
+
+Nevada State Tax: $1.06
+Clark County Tax: $0.84
+Las Vegas City Tax: $0.00
+Las Vegas Special Tax: $0.00
+
+Arizona State Tax: $1.29
+Maricopa County Tax: $0.16
+Phoenix City Tax: $0.53
+Phoenix Special Tax: $0.00
+----------------------------------------------------------------
+
+Input item price: $64
+
+California State Tax: $3.84
+Butte County Tax: $0.16
+Chico City Tax: $0.00
+Chico Special Tax: $0.64
+
+
+California State Tax: $3.84
+Butte County Tax: $0.16
+Paradise City Tax: $0.32
+Paradise Special Tax: $ 0.64
+
+California State Tax: $3.84
+Sacramento County Tax: $0.16
+Sacramento City Tax: $0.32
+Sacramento Special Tax: $0.96
+
+Nevada State Tax: $2.94
+Clark County Tax: $2.34
+Las Vegas City Tax: $0.00
+Las Vegas Special Tax: $0.00
+
+Arizona State Tax: $3.58
+Maricopa County Tax: $0.45
+Phoenix City Tax: $1.47
+Phoenix Special Tax: $0.00
+----------------------------------------------------------------
+
 Input item price: $50
 
 California State Tax: $3.00
@@ -359,264 +446,178 @@ Phoenix City Tax: $1.15
 Phoenix Special Tax: $0.00
 ----------------------------------------------------------------
 
-Input item price: $456
+Input item price: $766
 
-California State Tax: $27.36
-Butte County Tax: $1.14
+California State Tax: $45.96
+Butte County Tax: $1.92
 Chico City Tax: $0.00
-Chico Special Tax: $4.56
+Chico Special Tax: $7.66
 
 
-California State Tax: $27.36
-Butte County Tax: $1.14
-Paradise City Tax: $2.28
-Paradise Special Tax: $ 4.56
+California State Tax: $45.96
+Butte County Tax: $1.92
+Paradise City Tax: $3.83
+Paradise Special Tax: $ 7.66
 
-California State Tax: $27.36
-Sacramento County Tax: $1.14
-Sacramento City Tax: $2.28
-Sacramento Special Tax: $6.84
+California State Tax: $45.96
+Sacramento County Tax: $1.92
+Sacramento City Tax: $3.83
+Sacramento Special Tax: $11.49
 
-Nevada State Tax: $20.98
-Clark County Tax: $16.64
+Nevada State Tax: $35.24
+Clark County Tax: $27.96
 Las Vegas City Tax: $0.00
 Las Vegas Special Tax: $0.00
 
-Arizona State Tax: $25.54
-Maricopa County Tax: $3.19
-Phoenix City Tax: $10.49
+Arizona State Tax: $42.90
+Maricopa County Tax: $5.36
+Phoenix City Tax: $17.62
 Phoenix Special Tax: $0.00
 ----------------------------------------------------------------
 
-Input item price: $232
+Input item price: $1745
 
-California State Tax: $13.92
+California State Tax: $104.70
+Butte County Tax: $4.36
+Chico City Tax: $0.00
+Chico Special Tax: $17.45
+
+
+California State Tax: $104.70
+Butte County Tax: $4.36
+Paradise City Tax: $8.72
+Paradise Special Tax: $ 17.45
+
+California State Tax: $104.70
+Sacramento County Tax: $4.36
+Sacramento City Tax: $8.72
+Sacramento Special Tax: $26.18
+
+Nevada State Tax: $80.27
+Clark County Tax: $63.69
+Las Vegas City Tax: $0.00
+Las Vegas Special Tax: $0.00
+
+Arizona State Tax: $97.72
+Maricopa County Tax: $12.21
+Phoenix City Tax: $40.13
+Phoenix Special Tax: $0.00
+----------------------------------------------------------------
+
+Input item price: $20877
+
+California State Tax: $1252.62
+Butte County Tax: $52.19
+Chico City Tax: $0.00
+Chico Special Tax: $208.77
+
+
+California State Tax: $1252.62
+Butte County Tax: $52.19
+Paradise City Tax: $104.39
+Paradise Special Tax: $ 208.77
+
+California State Tax: $1252.62
+Sacramento County Tax: $52.19
+Sacramento City Tax: $104.39
+Sacramento Special Tax: $313.15
+
+Nevada State Tax: $960.34
+Clark County Tax: $762.01
+Las Vegas City Tax: $0.00
+Las Vegas Special Tax: $0.00
+
+Arizona State Tax: $1169.11
+Maricopa County Tax: $146.14
+Phoenix City Tax: $480.17
+Phoenix Special Tax: $0.00
+----------------------------------------------------------------
+
+Input item price: $233
+
+California State Tax: $13.98
 Butte County Tax: $0.58
 Chico City Tax: $0.00
-Chico Special Tax: $2.32
+Chico Special Tax: $2.33
 
 
-California State Tax: $13.92
+California State Tax: $13.98
 Butte County Tax: $0.58
-Paradise City Tax: $1.16
-Paradise Special Tax: $ 2.32
+Paradise City Tax: $1.17
+Paradise Special Tax: $ 2.33
 
-California State Tax: $13.92
+California State Tax: $13.98
 Sacramento County Tax: $0.58
-Sacramento City Tax: $1.16
-Sacramento Special Tax: $3.48
+Sacramento City Tax: $1.17
+Sacramento Special Tax: $3.49
 
-Nevada State Tax: $10.67
-Clark County Tax: $8.47
+Nevada State Tax: $10.72
+Clark County Tax: $8.50
 Las Vegas City Tax: $0.00
 Las Vegas Special Tax: $0.00
 
-Arizona State Tax: $12.99
-Maricopa County Tax: $1.62
-Phoenix City Tax: $5.34
+Arizona State Tax: $13.05
+Maricopa County Tax: $1.63
+Phoenix City Tax: $5.36
 Phoenix Special Tax: $0.00
 ----------------------------------------------------------------
 
-Input item price: $678
+Input item price: $736
 
-California State Tax: $40.68
-Butte County Tax: $1.70
+California State Tax: $44.16
+Butte County Tax: $1.84
 Chico City Tax: $0.00
-Chico Special Tax: $6.78
+Chico Special Tax: $7.36
 
 
-California State Tax: $40.68
-Butte County Tax: $1.70
-Paradise City Tax: $3.39
-Paradise Special Tax: $ 6.78
+California State Tax: $44.16
+Butte County Tax: $1.84
+Paradise City Tax: $3.68
+Paradise Special Tax: $ 7.36
 
-California State Tax: $40.68
-Sacramento County Tax: $1.70
-Sacramento City Tax: $3.39
-Sacramento Special Tax: $10.17
+California State Tax: $44.16
+Sacramento County Tax: $1.84
+Sacramento City Tax: $3.68
+Sacramento Special Tax: $11.04
 
-Nevada State Tax: $31.19
-Clark County Tax: $24.75
+Nevada State Tax: $33.86
+Clark County Tax: $26.86
 Las Vegas City Tax: $0.00
 Las Vegas Special Tax: $0.00
 
-Arizona State Tax: $37.97
-Maricopa County Tax: $4.75
-Phoenix City Tax: $15.59
+Arizona State Tax: $41.22
+Maricopa County Tax: $5.15
+Phoenix City Tax: $16.93
 Phoenix Special Tax: $0.00
 ----------------------------------------------------------------
 
-Input item price: $999
+Input item price: $2346
 
-California State Tax: $59.94
-Butte County Tax: $2.50
+California State Tax: $140.76
+Butte County Tax: $5.87
 Chico City Tax: $0.00
-Chico Special Tax: $9.99
+Chico Special Tax: $23.46
 
 
-California State Tax: $59.94
-Butte County Tax: $2.50
-Paradise City Tax: $5.00
-Paradise Special Tax: $ 9.99
+California State Tax: $140.76
+Butte County Tax: $5.87
+Paradise City Tax: $11.73
+Paradise Special Tax: $ 23.46
 
-California State Tax: $59.94
-Sacramento County Tax: $2.50
-Sacramento City Tax: $5.00
-Sacramento Special Tax: $14.98
+California State Tax: $140.76
+Sacramento County Tax: $5.87
+Sacramento City Tax: $11.73
+Sacramento Special Tax: $35.19
 
-Nevada State Tax: $45.95
-Clark County Tax: $36.46
+Nevada State Tax: $107.92
+Clark County Tax: $85.63
 Las Vegas City Tax: $0.00
 Las Vegas Special Tax: $0.00
 
-Arizona State Tax: $55.94
-Maricopa County Tax: $6.99
-Phoenix City Tax: $22.98
+Arizona State Tax: $131.38
+Maricopa County Tax: $16.42
+Phoenix City Tax: $53.96
 Phoenix Special Tax: $0.00
 ----------------------------------------------------------------
 
-Input item price: $1000
-
-California State Tax: $60.00
-Butte County Tax: $2.50
-Chico City Tax: $0.00
-Chico Special Tax: $10.00
-
-
-California State Tax: $60.00
-Butte County Tax: $2.50
-Paradise City Tax: $5.00
-Paradise Special Tax: $ 10.00
-
-California State Tax: $60.00
-Sacramento County Tax: $2.50
-Sacramento City Tax: $5.00
-Sacramento Special Tax: $15.00
-
-Nevada State Tax: $46.00
-Clark County Tax: $36.50
-Las Vegas City Tax: $0.00
-Las Vegas Special Tax: $0.00
-
-Arizona State Tax: $56.00
-Maricopa County Tax: $7.00
-Phoenix City Tax: $23.00
-Phoenix Special Tax: $0.00
-----------------------------------------------------------------
-
-Input item price: $34
-
-California State Tax: $2.04
-Butte County Tax: $0.09
-Chico City Tax: $0.00
-Chico Special Tax: $0.34
-
-
-California State Tax: $2.04
-Butte County Tax: $0.09
-Paradise City Tax: $0.17
-Paradise Special Tax: $ 0.34
-
-California State Tax: $2.04
-Sacramento County Tax: $0.09
-Sacramento City Tax: $0.17
-Sacramento Special Tax: $0.51
-
-Nevada State Tax: $1.56
-Clark County Tax: $1.24
-Las Vegas City Tax: $0.00
-Las Vegas Special Tax: $0.00
-
-Arizona State Tax: $1.90
-Maricopa County Tax: $0.24
-Phoenix City Tax: $0.78
-Phoenix Special Tax: $0.00
-----------------------------------------------------------------
-
-Input item price: $123
-
-California State Tax: $7.38
-Butte County Tax: $0.31
-Chico City Tax: $0.00
-Chico Special Tax: $1.23
-
-
-California State Tax: $7.38
-Butte County Tax: $0.31
-Paradise City Tax: $0.61
-Paradise Special Tax: $ 1.23
-
-California State Tax: $7.38
-Sacramento County Tax: $0.31
-Sacramento City Tax: $0.61
-Sacramento Special Tax: $1.84
-
-Nevada State Tax: $5.66
-Clark County Tax: $4.49
-Las Vegas City Tax: $0.00
-Las Vegas Special Tax: $0.00
-
-Arizona State Tax: $6.89
-Maricopa County Tax: $0.86
-Phoenix City Tax: $2.83
-Phoenix Special Tax: $0.00
-----------------------------------------------------------------
-
-Input item price: $554
-
-California State Tax: $33.24
-Butte County Tax: $1.39
-Chico City Tax: $0.00
-Chico Special Tax: $5.54
-
-
-California State Tax: $33.24
-Butte County Tax: $1.39
-Paradise City Tax: $2.77
-Paradise Special Tax: $ 5.54
-
-California State Tax: $33.24
-Sacramento County Tax: $1.39
-Sacramento City Tax: $2.77
-Sacramento Special Tax: $8.31
-
-Nevada State Tax: $25.48
-Clark County Tax: $20.22
-Las Vegas City Tax: $0.00
-Las Vegas Special Tax: $0.00
-
-Arizona State Tax: $31.02
-Maricopa County Tax: $3.88
-Phoenix City Tax: $12.74
-Phoenix Special Tax: $0.00
-----------------------------------------------------------------
-
-Input item price: $342
-
-California State Tax: $20.52
-Butte County Tax: $0.85
-Chico City Tax: $0.00
-Chico Special Tax: $3.42
-
-
-California State Tax: $20.52
-Butte County Tax: $0.85
-Paradise City Tax: $1.71
-Paradise Special Tax: $ 3.42
-
-California State Tax: $20.52
-Sacramento County Tax: $0.85
-Sacramento City Tax: $1.71
-Sacramento Special Tax: $5.13
-
-Nevada State Tax: $15.73
-Clark County Tax: $12.48
-Las Vegas City Tax: $0.00
-Las Vegas Special Tax: $0.00
-
-Arizona State Tax: $19.15
-Maricopa County Tax: $2.39
-Phoenix City Tax: $7.87
-Phoenix Special Tax: $0.00
-----------------------------------------------------------------
 */
