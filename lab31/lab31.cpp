@@ -42,6 +42,7 @@ int main ()
     cout << "The best phone plan for you is the " << PriceCheck(ATT_Unl, VZ_Unl, Sprint_Unl, Sprint_2gb);
 }
 
+//Funcitons that find prices of plans
 int ATTUnlimitedChoice (int phones, int tablets, int gigs)
 {
     int total_price = 0;
@@ -147,31 +148,42 @@ int Sprint2GB (int phones)
     return total_price;
 }
 
+//Checks the price of the companies and returns the lowest company.
 string PriceCheck (int ATT_Unl, int VZ_Unl, int Sprint_Unl, int Sprint_2gb)
 {
     int total = ATT_Unl;
     string company = "AT&T Unlimited Plan.";
-    
+    cout << "ATT Unl" << endl;
+    cout << total << endl;
     if (VZ_Unl < ATT_Unl)
     {
         total = VZ_Unl;
+        cout << "VERIZON" << endl;
+        cout << VZ_Unl << endl;
+        cout << total << endl;
         company = "Verizon Unlimited Plan.";
     }
-    if (num_tablets)
+    if (num_tablets = 0)
     {
         if (Sprint_Unl < total)
         {
             total = Sprint_Unl;
+            cout << "SPRINT" << endl;
+            cout << Sprint_Unl << endl;
+            cout << total;
             company = "Sprint Unlimited Plan.";
         }
     }
     
-    if (num_tablets != 0)
+    if (num_tablets = 0)
     {
         if (num_data = 2)
         {
             if (Sprint_2gb)
             {
+                cout << "SPRINT 2GB" << endl;
+                cout << Sprint_2gb << endl;
+                cout << total << endl;
                 total = Sprint_2gb;
                 company = "Sprint 2gb Plan.";
             }
