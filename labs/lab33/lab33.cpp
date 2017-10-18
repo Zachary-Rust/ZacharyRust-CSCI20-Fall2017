@@ -48,11 +48,6 @@ int main()
     
     while (user_num != comp_num)
     {
-        //Countdown Timer
-        for (int i = 0; i < 5; i++)
-        {
-            cout << 5 - i << endl;
-        }
         
         cout << "Thats not the number, ";
         SpacesAway(user_num, comp_num);
@@ -80,5 +75,28 @@ int main()
 
 /*
 Attempts:
+Pick a number between 1 and 50 to see if you gan guess the right one.
+7
+Thats not the number, you are too low.
+Try again: 56
+That number is not between 1 and 50.
+Try again.
+40
+Thats not the number, you are too high.
+Try again: 30
+Thats not the number, you are too low.
+Try again: 35
+Thats not the number, you are too high.
+Try again: 33
+Thats not the number, you are too low.
+Try again: 34
+5
+4
+3
+2
+1
+You did it!
+Goodbye.
+
 
 */
