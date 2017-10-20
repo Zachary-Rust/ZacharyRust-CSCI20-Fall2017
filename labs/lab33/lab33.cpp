@@ -98,5 +98,25 @@ Try again: 34
 You did it!
 Goodbye.
 
-
+Pick a number between 1 and 50 to see if you gan guess the right one.
+30
+Thats not the number, you are too high.
+Try again: 15
+Thats not the number, you are too high.
+Try again: 7
+Thats not the number, you are too high.
+Try again: 3
+Thats not the number, you are too low.
+Try again: 4
+Thats not the number, you are too low.
+Try again: 5
+Thats not the number, you are too low.
+Try again: 6
+5
+4
+3
+2
+1
+You did it!
+Goodbye.
 */
