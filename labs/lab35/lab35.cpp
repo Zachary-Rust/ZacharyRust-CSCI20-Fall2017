@@ -16,7 +16,7 @@ class TemperatureConverter {
     public:
     
     TemperatureConverter();
-    TemperatureConverter(double k = 0);
+    TemperatureConverter(double k);
     
     void SetTempFromKelvin(double k);
     void SetTempFromCelsius(double c);
@@ -33,7 +33,7 @@ TemperatureConverter:: TemperatureConverter() {
     kelvin_ = 0;
 }
 
-TemperatureConverter:: TemperatureConverter(double k = 0) {
+TemperatureConverter:: TemperatureConverter(double k) {
     if (k >= 0) {
         kelvin_ = k;
     }
