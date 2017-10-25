@@ -1,9 +1,16 @@
+/*
+Zachary Rust
+10/24/17
+3.5 lab = classes and constructors
+This program converts temperatures between Kelvin, Celsius, and Fahrenheit.
+*/
 #include <iostream>
 
 using namespace std;
-
+//This class converts temperatures
 class TemperatureConverter {
     private:
+    //Class only stores kelvin temp, uses other functions to find celsius and fahrenheit
     double kelvin_;
     
     public:
