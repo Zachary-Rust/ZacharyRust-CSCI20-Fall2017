@@ -32,3 +32,17 @@ int main() {
 return 0;
     
 }
+
+/*
+Output:
+
+Please enter a character: G6AS-1
+Yes, that is a uppercase letter.
+Enter -1 to end program.
+Not a letter
+Enter -1 to end program.
+Yes, that is a uppercase letter.
+Enter -1 to end program.
+Yes, that is a uppercase letter.
+Enter -1 to end program.
+*/
