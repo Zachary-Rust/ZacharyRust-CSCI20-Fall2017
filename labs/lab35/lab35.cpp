@@ -83,3 +83,32 @@ void TemperatureConverter:: PrintTemperatures() {
     cout << "Celcius: " << GetTempAsCelsius() << endl;
     cout << "Farenheit: " << GetTempAsFahrenheit() << endl;
 }
+
+/*
+Output:
+
+Temperatures:
+ Kelvin: 0
+Celcius: -273
+Farenheit: 32
+Temperatures:
+ Kelvin: 274
+Celcius: 0
+Farenheit: 525
+400.15
+Temperatures:
+ Kelvin: 400.15
+Celcius: 127
+Farenheit: 752
+31
+Temperatures:
+ Kelvin: 305
+Celcius: 31
+Farenheit: 581
+523
+Temperatures:
+ Kelvin: 273
+Celcius: 0
+Farenheit: 523
+
+*/
