@@ -18,7 +18,8 @@ void PrintB (char c)
     cout << c << " " << c << endl;
     cout << c << c << c << endl;
     cout << c << " " << c << endl;
-    cout << c << c << c << endl;
+    cout << c << c << endl;
+    cout << "~~~" << endl;
 }
 
 void PrintC (char c)
