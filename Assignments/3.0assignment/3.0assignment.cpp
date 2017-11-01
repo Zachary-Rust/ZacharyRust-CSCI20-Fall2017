@@ -1,7 +1,7 @@
 //Zachary Rust
 //10/25/17
 //3.0 Assignment
-//This project was a colaboration between Carter Dishman and Zachary Rust
+//This project was a colaboration between Carter Dishman and Zachary Rust.
 
 #include <iostream>
 #include <cmath>
@@ -9,13 +9,13 @@
 
 using namespace std;
 
-int Roll();
 
 //This class holds all information for the computer player
 class comp
 {
     private:
     int comp_points;
+    int comp_turn_points;
     
     public:
     comp();
@@ -23,191 +23,189 @@ class comp
     void CompRoll();
     
     void AddPoints (int p);
-    void ResetPoints();
+    //void ResetPoints();
+    void ResetCompTurnPoints();
     int GetPoints ();
 };
 
-//Global Varables
-int player_points = 0;
-
-int PlayGame (int t_score = 0)
+class player
 {
-    //If the player is already playing, this stores their turn score.
-    int turn_score = t_score;
+    private:
+    int player_points;
+    bool started;
     
-        char YN;
-        
-        cout << "Would you like to roll the die? (Y/N)" << endl;
-        cin >> YN;
-        cout << endl;
-        
-        //bool for while loop
-    bool deciding = false;
+    public:
+    //constructor
+    player();
     
-    //This while loop keeps asking the player if they want 
-    //to roll the die until the player gives a valid answer.
-    while (deciding == false)
-    {
-        switch (YN)
-    {
-        case 'y':
-        //This variable holds player score before turn starts
-        int player_base_score = player_points;
-        Roll(player_base_score);
-        deciding = true;
-        break;
-        
-        case 'n':
-        AI.CompRoll();
-        break;
-        
-        case ('c'):
-            cout << endl;
-            cout << "Scores:" << endl;
-            cout << "Your points for this turn:" << turn_score << endl;
-            cout << "Your total points: " << player_points << endl;
-            cout << "Computers total points: " << AI.GetPoints() << endl;
-            cout << endl;
-        
-        
-        default:
-        cout << "Would you like to roll the die? (Y/N)";
-        cin >> YN;
-    }
-}
+    void GameLoop();
+    void Started ();
+    bool IsStarted ();
+    void AddPoints (int p);
+    int GetPoints ();
+};
+
+player::player ()
+{
+    player_points = 0;
+    started = false;
 }
 
-int Roll(int p_b_score = 0) //This function will act as a dice roll, 1 through 6.
+void player::Started ()
 {
-        int turn_score = 0;
+    started = true;
+}
 
-        int rand_roll = (rand()%6)+1;                          
-        turn_score = (turn_score + rand_roll);
-        
-        if (rand_roll == 1)
-        {
-            turn_score = 0;
-            player_points = p_b_score;
-            cout << "You rolled a 1! Your points for this turn have been set to 0 and your total score is now: "<< player_points << endl;
-            cout << endl;
-            AI.CompRoll();
-        }
-        
-        cout << "You rolled a: " << rand_roll << endl;
-        cout << "You're current turn score: " << turn_score << endl;
-        PlayGame(turn_score);
-    }
+bool player::IsStarted ()
+{
+    return started;
+}
 
+void player::AddPoints (int p)
+{
+    player_points += p;
+}
+
+int player::GetPoints ()
+{
+    return player_points;
+}
+
+//Class Functions
 comp::comp()
 {
     comp_points = 0;
+    comp_turn_points = 0;
 }
 
-void comp::AddPoints (int p)
+void comp::ResetCompTurnPoints()
 {
-    comp_points += p;
-}
-
-void comp::ResetPoints ()
-{
-    comp_points = 0;
-}
-
-int comp::GetPoints()
-{
-    return comp_points;
+    comp_turn_points = 0;
 }
 
 void comp::CompRoll()
 {
-    //Point variable
-    int comp_turn_points = 0;
-    
-    //is playing?
-    bool comp_playing = true;
-    while (comp_turn_points < 30 && comp_playing)
+    while (comp_turn_points < 30)
     {
-        int rand_roll = (rand()%6)+1;
-        if (rand_roll == 1)
+        int comp_r_num = rand()%6 + 1;
+        cout << "The computer rolled a: " << comp_r_num << endl;
+    
+        if (comp_r_num != 1)
         {
-            comp_turn_points = 0;
-            cout << "Computer rolled a 1. The computer's points for this turn have been set to 0 and the computer's total score is now: " << comp_points << endl;
-            cout << endl;
-            comp_playing = false;
-            PlayGame();
+            comp_turn_points += comp_r_num;
+        
+            if (comp_turn_points > 30)
+            {
+                AddPoints(comp_turn_points);
+                cout << "Computer got " << comp_turn_points << " points during that turn." << endl;
+                cout << "The computer has " << comp_points << " points total." << endl;
+                GameLoop();
+            }
+        
         }
-        if (comp_playing)
+        
+        else if (comp_points + comp_turn_points >= 100)
         {
-            comp_turn_points += rand_roll;
+            cout << "CPU Wins!";
+        }
+        else
+        {
+            ResetCompTurnPoints();
+            cout << "Computer rolled a one and got it's turn points reset." << endl << endl;
+            GameLoop();
         }
     }
-    comp_points += comp_turn_points;
 }
 
-int main ()
+void comp::AddPoints(int p)
 {
+    comp_points += p;
+}
+
+int main()
+{
+    player a;
+    comp b;
     srand(time(0));
     
-    //Creates opponent so that it can be accessed anywhere
-    comp AI;
+    GameLoop();
+    return 0;
+}
 
-    //player points
-    char play_game = 'p';
+int PlayerRoll()
+{
+    int r_num = rand()%6 + 1;
+    return r_num;
+}
+
+void GameLoop (player &p, comp &AI)
+{
+    bool player_taking_turn = true;
+    char decision = 'a';
+    int player_turn_score =0;
     
-    //bool for while loop
-    bool deciding = false;
-    
-    //This while loop keeps asking the player if they want to play
-    //until the player gives a valid answer.
-    while (deciding == false)
+    while (player_taking_turn)
     {
-        switch (play_game)
+        //This variable keeps track of turn points
+        int roll_dice_score = 0;
+        
+        cout << " Would you like to roll the dice? (Y/N) Or press (C) to check your score." << endl;
+        cin >> decision;
+        
+        switch (decision)
         {
-            case 'y':
-            PlayGame();
-            deciding = true;
-            break;
-        
-            case 'n':
-            return 0;
-            break;
-        
-            default:
+        case 'y':
+        cout << endl;
+        roll_dice_score = PlayerRoll();
+        if (roll_dice_score != 1)
+        {
+            player_turn_score += roll_dice_score;
+            if (player_turn_score + p.GetPoints() >= 100)
             {
-                cout << "Do you want to play a game of Pig? (Y/N)" << endl;
-                cin >> play_game;
+                cout << "You won!" << endl;
+                //return 0;
             }
+            
+            cout << "You rolled a: " << roll_dice_score << " Your points from this turn: " << player_turn_score << " Your total Points: " << p.GetPoints() << endl;
+        }
+        else
+        {
+            player_turn_score = 0;
+            cout << "You rolled a 1. Points from this turn reset to 0. Total score: " << p.GetPoints() << endl;
+            AI.CompRoll();
+        }
+        break;
+        
+        case 'n':
+        cout << "Player turn score before adding points: " << player_turn_score << endl;
+        p.AddPoints(player_turn_score);
+        cout << "Player total score after adding turn points: " << p.GetPoints() << endl;
+        AI.CompRoll();
+        player_turn_score = 0;
+        break;
+        
+        case 'c':
+        cout << "Your total score is: " << p.GetPoints() << endl;
+        
+        
+        default:
+        cout << "Would you like to roll the dice? (Y/N)";
         }
     }
 }
 /*
-cout << "Roll again? (Y/N) Check score? (C)" << endl;
-        cin >> input;
-        cout << endl;
-        
-        switch (input)
-        {
-            case ('y'):
-            keep_rolling = true;
-            break;
-            
-            case ('n'):
-            keep_rolling = false;
-            
-            player_points += turn_score;
-            cout << "Your turn Points: " << turn_score << endl;
-            cout << "Your total Points: " << player_points << endl;
-            AI.CompRoll();
-            //AI Turn
-            break;
-            
-            
-            
-            default:
-            cout << "Keep rolling? y/n" << endl;
-            cin >> input;
-            cout << endl;
-            break;
-        }
-    }
-    */
+Running /home/ubuntu/workspace/Assignments/3.0assignment/3.0assignment.cpp
+/home/ubuntu/workspace/Assignments/3.0assignment/3.0assignment.cpp: In member function ‘void comp::CompRoll()’:
+/home/ubuntu/workspace/Assignments/3.0assignment/3.0assignment.cpp:116:22: error: ‘GameLoop’ was not declared in this scope
+             GameLoop();
+                      ^
+/home/ubuntu/workspace/Assignments/3.0assignment/3.0assignment.cpp: In function ‘int main()’:
+/home/ubuntu/workspace/Assignments/3.0assignment/3.0assignment.cpp:132:14: error: ‘GameLoop’ was not declared in this scope
+     GameLoop();
+              ^
+*/
+
+/*
+SOLUTION:
+Use returns in the functions to go back to the game loop in main
+*/

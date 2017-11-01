@@ -1,7 +1,7 @@
 //Zachary Rust
 //10/25/17
 //3.0 Assignment
-//This project was a colaboration between Carter Dishman and Zachary Rust
+//This project was a colaboration between Carter Dishman and Zachary Rust.
 
 #include <iostream>
 #include <cmath>
@@ -33,6 +33,8 @@ comp::comp()
     comp_points = 0;
 }
 
+
+
 int main()
 {
     comp AI;
@@ -54,7 +56,7 @@ int main()
         cin >> decision;
         
         switch (decision)
-        
+        {
         case 'y':
         roll_dice_score = PlayerRoll();
         if (player_turn_score != 1)
@@ -69,6 +71,14 @@ int main()
             //AI.CompRoll();
         }
         break;
+        
+        case 'n':
+        AI.CompRoll();
+        break;
+        
+        default:
+        cout << "Would you like to roll the dice? (Y/N)";
+        }
     }
 }
 
