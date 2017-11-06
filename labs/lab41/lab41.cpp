@@ -17,8 +17,8 @@ class ArrayTools
     int Find_min (int first, int last);
     int Find_max (int first, int last);
     int Find_sum ();
-    //void Num_even/odd ();
-    //int Search ();
+    //void Num_even ();
+    int Search (int s);
     //bool Is_sorted ();
 };
 
@@ -29,6 +29,11 @@ ArrayTools::ArrayTools (int n[], int s)
         nums[i] = n[i];
     }
     size = s;
+    
+    for (int i = 0; i<s; i++)
+    {
+        cout << nums[i] << ", ";
+    }
 }
 
 void ArrayTools::Print ()
@@ -74,6 +79,21 @@ int ArrayTools::Find_sum ()
     }
 }
 
+int ArrayTools::Search (int s)
+{
+    int match = 0;
+    
+    for (int i = 0; i < 10; i++)
+    {
+        if (nums[i] == s)
+        {
+            match = nums[i];
+            return match;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
     const int SIZE = 10;
@@ -82,11 +102,12 @@ int main()
     for(int i = 0; i<SIZE;i++){
         cin>>myArray[i];
     }
+    
     ArrayTools a(myArray,SIZE);
-    a.Print();
-    cout<<"Min: "<<a.Find_min(0, 4)<<endl;
-    cout<<"Max: "<<a.Find_max(5, 10)<<endl;
-    cout<<"Sum = "<<a.Find_sum()<<endl;
+    //a.Print();
+    //cout<<"Min: "<<a.Find_min(0, 4)<<endl;
+    //cout<<"Max: "<<a.Find_max(5, 10)<<endl;
+    //cout<<"Sum = "<<a.Find_sum()<<endl;
     //cout<<"Search 10"<<a.Search(10)<<endl;
     //cout<<"Sorted? "<<a.Is_sorted()<<endl;
     

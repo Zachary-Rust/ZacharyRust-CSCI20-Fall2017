@@ -50,10 +50,6 @@ void CreatePerson ()
     
     cout << "Enter person's name." << endl;
     cin >> name;
-    
-    Person name;
-    
-    cout << "Created person."
 }
 
 int main ()

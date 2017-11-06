@@ -84,3 +84,102 @@ int main()
     }
     return 0;
 }
+/*
+OUTPUT:
+
+Would you like to buy an item? (y/n)
+y
+Which item would you like to buy?
+1: apples $5     Inventory: 10
+2: carrots $3     Inventory: 12
+3: peaches $6     Inventory: 5
+4: lettuce $10     Inventory: 22
+5: peppers $5     Inventory: 18
+6: avacados $8     Inventory: 6
+7: potatoes $10     Inventory: 25
+8: chocolate $5     Inventory: 8
+9: oreos $2     Inventory: 17
+10: cheese $3     Inventory: 11
+1
+You chose: apples.
+How many do you want?
+5
+Total: 25.
+Would you like to buy an item? (y/n)
+y
+Which item would you like to buy?
+1: apples $5     Inventory: 5
+2: carrots $3     Inventory: 12
+3: peaches $6     Inventory: 5
+4: lettuce $10     Inventory: 22
+5: peppers $5     Inventory: 18
+6: avacados $8     Inventory: 6
+7: potatoes $10     Inventory: 25
+8: chocolate $5     Inventory: 8
+9: oreos $2     Inventory: 17
+10: cheese $3     Inventory: 11
+7
+You chose: potatoes.
+How many do you want?
+8
+Total: 105.
+Would you like to buy an item? (y/n)
+y
+Which item would you like to buy?
+1: apples $5     Inventory: 5
+2: carrots $3     Inventory: 12
+3: peaches $6     Inventory: 5
+4: lettuce $10     Inventory: 22
+5: peppers $5     Inventory: 18
+6: avacados $8     Inventory: 6
+7: potatoes $10     Inventory: 17
+8: chocolate $5     Inventory: 8
+9: oreos $2     Inventory: 17
+10: cheese $3     Inventory: 11
+3
+You chose: peaches.
+How many do you want?
+7
+Not enough in stock!
+Would you like to buy an item? (y/n)
+1
+Would you like to buy an item? (y/n)
+5
+Would you like to buy an item? (y/n)
+y
+Which item would you like to buy?
+1: apples $5     Inventory: 5
+2: carrots $3     Inventory: 12
+3: peaches $6     Inventory: 5
+4: lettuce $10     Inventory: 22
+5: peppers $5     Inventory: 18
+6: avacados $8     Inventory: 6
+7: potatoes $10     Inventory: 17
+8: chocolate $5     Inventory: 8
+9: oreos $2     Inventory: 17
+10: cheese $3     Inventory: 11
+1
+You chose: apples.
+How many do you want?
+5
+Total: 130.
+Would you like to buy an item? (y/n)
+y
+Which item would you like to buy?
+1: apples $5     Inventory: 0
+2: carrots $3     Inventory: 12
+3: peaches $6     Inventory: 5
+4: lettuce $10     Inventory: 22
+5: peppers $5     Inventory: 18
+6: avacados $8     Inventory: 6
+7: potatoes $10     Inventory: 17
+8: chocolate $5     Inventory: 8
+9: oreos $2     Inventory: 17
+10: cheese $3     Inventory: 11
+1
+There aren't any left!
+Would you like to buy an item? (y/n)
+n
+Total price: $130
+Have a good day!
+*/
