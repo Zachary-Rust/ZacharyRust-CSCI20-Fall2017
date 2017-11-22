@@ -33,6 +33,7 @@ class player //Class initialization for the player
     public:
     //constructor
     player();
+    
     int PlayerRoll();
     void AddPoints (int p);
     int GetPoints ();
