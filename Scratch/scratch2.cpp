@@ -1,80 +1,25 @@
 #include <iostream>
-#include <string>
-#include <iomanip>
-#include <sstream>
-
 using namespace std;
 
 int main()
 {
-    int size = 0;
+    int alpha = 5;     //sets alpha to 5
+    int beta = 20;     //sets beta to 20
     
-    cout << "Enter the number of items you want to add: ";
-    cin >> size;
+    int * alphaPtr = &alpha;     //creates and initializes a pointer named alphaPtr to the memory location of alpha
+    int * betaPtr = &beta;     //creates and initializes a pointer named betaPtr to the memory location of beta
     
-    string name[size];
-    int price[size];
-    int inventory[size];
+    cout<<*alphaPtr<<endl;     //outputs alpha by going through the pointer 5
+    cout<<*betaPtr<<endl;     //outputs beta by going throught the pointer 20
     
-    string n;
-    int p = 0;
-    int in = 0;
+    *alphaPtr += 5;     //adds 5 to the value in the memory location of alpha
+    betaPtr = alphaPtr;     //sets betaPtr memory location to alphaPrt memory location
     
-    for (int i = 0; i < size; i++)
-    {
-        
-        cout << "Input item " << i + 1 << " name: ";
-        cin >> n;
-        
-        name[i] = n;
-        
-        cout << "Input item " << i + 1 << " price: ";
-        cin >> p;
-        
-        price[i] = p;
-        
-        cout <<"Input item " << i + 1 << "inventory: ";
-        cin >> in;
-        
-        inventory[i] = in;
-        cout << endl;
-    }
-    
-    cout << "Name" << setw (20) << " Price" << setw(24) << "Inventory" << endl;
-    
-    //This sets the underline under the headings
-    for (int i = 0; i < 63; i++)
-    {
-        cout << "~";
-    }
-    cout << endl;
-    
-     
-    for (int a = 0; a < size; a++)
-    {
-        int temp = 0;
-        string result;
-        
-        stringstream convert;
-        
-        convert << price[a];
-        result = convert.str();
-        
-        string r;
-        
-        convert << inventory[a];
-        r = convert.str();
-        
-        int space = 0;
-        if (result.length() > r.length())
-        {
-            space = result.length();
-        }
-        else
-        {
-            space = 0;
-        }
-        
-        cout << name[a] << setw(20 - name[a].length() + result.length() - 1) << price[a] << setw(20 - result.length() + (r.length() - result.length())) << inventory[a] << endl;
-    }
+    cout<<*alphaPtr<<endl;     //outputs the value in alphaPtr 10
+    cout<<*betaPtr<<endl;     //outputs the value in betaPtr (which was set to alphaPtr, so will output the same value) 10
 }
+
+//Comment each line of code.  Explain what it is doing.  What value is held there.
+//Why is it doing what it is doing?
+//This program sets two variables and sets two pointers to point to them.
+//It then adds 5 to alpha through the pointer and then sets the pointers to go to the same location.
