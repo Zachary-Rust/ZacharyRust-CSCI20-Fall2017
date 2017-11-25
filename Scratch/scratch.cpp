@@ -1,22 +1,17 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 
 using namespace std;
 
 int main()
 {
-   ifstream fin;
-   ofstream fout;
+   int num = 23;
+   int* numPtr = nullptr;
    
-   fin.open("Output.txt");
-   while (!fin.eof)
-   {
-      cout << endl;
-   }
-   fout << "Test" << endl;
-   fout << "TEST LINE THISIEWP:IOJHD{FSOIJ" << endl;
+   cout << num << endl;
    
-   fin.close();
-   fout.close();
+   numPtr = &num;
+   
+   cout << numPtr << endl;
+   
+   cout << *numPtr << endl;
 }
