@@ -140,7 +140,9 @@ int main ()
     {
         cout << "Successfully loaded student answers!" << endl << endl;
     }
-    for (int a = 0; a < num_kids; a++)
+    
+    int a = 0;
+    while (!inFS.eof())
     {
         for (int i = 0; i < num_answers + 1; i++)
         {
@@ -183,6 +185,7 @@ int main ()
         
         //Sets points to - for next kid
         points = 0;
+        a++;
     }
     inFS.close();
 }
