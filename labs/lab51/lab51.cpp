@@ -1,8 +1,13 @@
 #include <iostream> //There shouldn't be two imported iostreams
 #include <iostream> 
 #include <cstring> 
-using namespace std;   
-
+using namespace std;
+/*
+Zachary Rust
+11.28.17
+Lab 5.1
+In this lab I commented code and explained what it did and what was wrong
+*/
 int main() {
     int nameLength = 0;
     char * name = new char[];   //This is a pointer pointing to a new character array, but there needs to be an index(10).  It's causing an error
