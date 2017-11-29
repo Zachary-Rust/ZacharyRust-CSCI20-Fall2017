@@ -5,15 +5,19 @@ using namespace std;
 int main ()
 {
     int * pointer = nullptr;
-    
     int num = 10;
-    
     pointer = &num;
     
-    cout << pointer << endl;
-    for (int i = 0; i < 10; i++)
+    const int destruction = 5;
+    
+    for (int i = 0; i < destruction; i++)
     {
-        cout << pointer + i << endl;
-        *(pointer + i) = 0;
+        pointer += i;
+        cout << pointer << endl;
+        cout << "Origional: " << *pointer << endl;
+        *pointer = 0;
+        cout << "Modified: " << *pointer << endl;
     }
+    
+    return 0;
 }
