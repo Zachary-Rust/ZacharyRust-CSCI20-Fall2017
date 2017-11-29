@@ -1,4 +1,0 @@
-Alex T Martin
-Age: 45
-Weight: 220
-Gender: m

@@ -7,14 +7,15 @@ using namespace std;
 int main ()
 {
     string students[3][3];
-    string grades[5][2];
+    
+    int classCount = 0;
+    int grade[7];
+    char letter[7];
     
     int rows = 0;  //rows
     int cols = 0;  //columns
     
-    ifstream inFS;
-    
-    inFS.open("input.txt");
+    ifstream inFS("input.txt");
     
     if (!inFS.is_open())
     {
@@ -22,22 +23,18 @@ int main ()
         return 1;
     }
     
-    for (rows = 0; rows < 3; rows++)
+    
+    inFS >>students[0][0];
+    inFS >>students[0][1];
+    
+    inFS >>classCount;
+    
+    for(int i = 0; i<classCount; i++)
     {
-        for (cols = 0; cols < 3; cols++)
-        {
-            inFS >> students[rows][cols];
-            cout << students[rows][cols] << " ";
-        }
-        for (int r = 0; r < static_cast<int>(students[rows][2].at(0)) - 1; r++)
-        {
-            for (int c = 0; c < 2; c++)
-            {
-                inFS >> grades[r][c];
-            }
-            cout << endl << grades[r][0] << " " << grades[r][1] << endl;
-        }
-        cout << endl;
+        inFS >>grade[i];
+        inFS >>letter[i];
+        
+    }
         /*
         int num = 0;
         for (int r = 0; r < 4; r++)
