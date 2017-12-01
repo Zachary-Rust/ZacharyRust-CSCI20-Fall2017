@@ -4,14 +4,32 @@ using namespace std;
 
 int main()
 {
-   int num = 23;
-   int* numPtr = nullptr;
+   char word1[10];
+   char word2[10];
    
-   cout << num << endl;
+   cin >> word1;
+   cin >> word2;
    
-   numPtr = &num;
+   cout << "First Word: ";
+   for (int i = 0; i < 10; i++)
+   {
+      cout << word1[i];
+   }
+   cout << endl;
    
-   cout << numPtr << endl;
+   cout << "Second Word: ";
+   for (int i = 0; i < 10; i++)
+   {
+      cout << word2[i];
+   }
+   cout << endl;
    
-   cout << *numPtr << endl;
+   word1[10] = word2[10];
+   
+   cout << "First Word: ";
+   for (int i = 0; i < 10; i++)
+   {
+      cout << word1[i];
+   }
+   cout << endl;
 }

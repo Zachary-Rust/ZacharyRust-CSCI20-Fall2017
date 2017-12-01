@@ -1,0 +1,12 @@
+Suzy Cue
+Number of Classes: 4
+GPA: 4
+
+Joe Joseph
+Number of Classes: 4
+GPA: 3
+
+Jillian Smith
+Number of Classes: 5
+GPA: 3
+
