@@ -1,1 +1,3 @@
 Zachary Rust
+Total Inventory: 30
+Number of Products: 1

@@ -1,57 +1,87 @@
+//Zachary Rust
+//11/30/17
+//lab 4.6 - This lab reads an input file of students grades and classes and outputs an html page to display the data
 #include <iostream>
 #include <string>
 #include <fstream>
 
 using namespace std;
+
+//This function claculates gpa
 int gpa(char score[], int size);
 
 int main ()
 {
+    //first/last name
     string students[2];
     
     int class_count = 0;
     int grade[7];
     char letter[7];
     
+    //Set up file streams
     ifstream inFS("input.txt");
+    ofstream off("GradeReport.html");
     
+    //Set up html page
+    off << "<!DOCTYPE html>" << endl;
+    off << "<html>" << endl;
+    off << "<head>" << endl;
+    off << "<title>Progress Report</title></title>" << endl;
+    off << "</head>" << endl;
+    off << "<body>" << endl << endl;
+    
+    //Check if input file is open
     if (!inFS.is_open())
     {
         cout << "Error loading file." << endl;
         return 1;
     }
     
-    int a = 0;
+    //Checks if created file is open
+    if (!off.is_open())
+    {
+        cout << "Error creating file" << endl;
+        return 1;
+    }
+    
+    //loops through each student until none left
     while (!inFS.eof())
     {
+    //first/last names
     inFS >>students[0];
     inFS >>students[1];
     
+    //used for loop
     inFS >>class_count;
     
+    //takes in grades for each class
     for (int i = 0; i<class_count; i++)
     {
         inFS >>grade[i];
         inFS >>letter[i];
     }
     
-    cout << students[0] << " " << students[1] << endl;
-    cout << "Number of classes: " << class_count << endl;
-    cout << "Gpa: " << gpa(letter, class_count) << endl;
-    cout << "Saving info..." << endl << endl;
-    
-    ofstream off("Grade Report.txt");
-    
-    if (off.is_open)
+    //cin does not read the newline character, so this checks if it hit it to avoid double reading the last student
+    if (!inFS.eof())
     {
-        cout << "Error loading file" << endl;
+    // cout << students[0] << " " << students[1] << endl;
+    // cout << "Number of classes: " << class_count << endl;
+    // cout << "Gpa: " << gpa(letter, class_count) << endl;
+    // cout << "Saving info..." << endl << endl;
+    
+    off << "<h1>" << students[0] << " " << students[1] << "</h1>" << endl;
+    off << "<p>" << "Number of classes: " << class_count << "</p>" << endl;
+    off << "<p>" << "Gpa: " << gpa(letter, class_count) << "</p>" << endl;
+    off << endl;
     }
-    else
-    {
-        off >> ""
-    }
-    }
+}
     inFS.close();
+    
+    //Finish html page
+    off << endl << "</body>" << endl;
+    off << "</html>";
+    off.close();
 }
 
 int gpa (char score[], int size)
