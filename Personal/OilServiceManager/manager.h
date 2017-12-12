@@ -1,12 +1,14 @@
 #include <string>
 using namespace std;
 
-class manager{
+class manager {
     private:
     //store end
     int recipt_num;
+    int latest_id;
     string company;
     string employee;
+    int id;
     int num_products;
     string products[10];
     double prices[10];
@@ -22,12 +24,12 @@ class manager{
     
     public:
     manager();
+    string FindLatestID();
     void Initialize();
+    void SignIn();
+    void NewEmployee();
     void ListItems();
     void BuyItem(int p);
-    void DisplayRecipt();
     void PrintRecipt();
-    void ChangeCashier();
-    void Quit();
-    
+    void CreateRecipt();
 };

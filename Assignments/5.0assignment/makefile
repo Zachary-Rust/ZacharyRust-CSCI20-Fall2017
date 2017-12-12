@@ -1,11 +1,11 @@
-runexe: valvoline.o manager.o
-	g++ valvoline.o manager.o -o runexe
+runexe: main.o manager.o
+	g++ main.o manager.o -o runexe
 	
-valvoline: runexe.cpp
-	g++ -g -c runexe.cpp
+main: main.cpp
+	g++ -g -c main.cpp
 	
 manager: manager.cpp
-	g++ -g -c manager.o
+	g++ -g -c manager.cpp
 	
 clean:
 	rm *.o runexe

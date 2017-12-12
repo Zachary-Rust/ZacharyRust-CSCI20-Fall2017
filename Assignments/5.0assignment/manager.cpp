@@ -2,207 +2,155 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-#include <sstream>
-#include <ctime>
-#include <cstdio>
-#include <cstdlib>
 #include <cstring>
+#include <cctype>
 #include "manager.h"
+
 using namespace std;
 
-//Constructor
-manager::manager() {
+manager::manager()
+{
     //store end
-    recipt_num = 0;
     employee = "null";
-    id = 1000;
+    has_ran = false;
     
-    //load products
+    //load data
     ifstream in;
     
-    in.open("1000.txt");
+    in.open("config.txt");
     
-    //Gets company name
     in >> company;
-    
-    //gets number of productos for loops
+    recipt_num = 1000;
     in >> num_products;
     
-    //Set products and prices
+    //gets all products & prices
     for (int i = 0; i < num_products && !in.eof(); i++)
     {
         in >> products[i];
         in >> prices[i];
-        //checks user error if wrong number of products is entered
+        //checks user error if wrong number or products is in file
         if (in.eof())
         {
-            num_products = i + 1;
         }
     }
     in.close();
     
+    //Get last recipt number
+    in.open("number.txt");
+    
+    if (!in.is_open())
+    {
+        cout << "Didn't load recipt data. (Could be due to initial startup.)" << endl;
+    }
+    else
+    {
+    in >> recipt_num;
+    cout << "RECIPT NUMBER---  " << recipt_num << endl;
+    }
+    
+    in.close();
+    
     //customer end
-    total = 0.00;
-    c_name = "null";
-    date = "null";
-    total = 0.00;
+    c_name = "";
+    date = "";
     items = 0;
     c_products[10];
     c_prices[10];
 }
 
-string manager::FindLatestID()
-{
-    id = 1000;
-    
-    //set up temp for file name
-    string temp = "";
-    stringstream ss;
-    ss << id;
-    temp = ss.str();
-    temp += ".txt";
-    
-    ifstream in;
-    in.open (temp.c_str());
-    
-    while (in.is_open())
-    {
-        in.close();
-        id += 1;
-        stringstream ss2;
-        ss2 << id;
-        temp = ss2.str();
-        temp += ".txt";
-        in.open(temp.c_str());
-    }
-    
-    return temp;
-}
-
-//Set up basic information
 void manager::Initialize()
 {
-    SignIn();
-    cout << endl;
-    cout << "Welcome " << employee << "!" << endl;
-    // cout << "Date(m/d/yr): ";
-    // cin >> date;
-    // cout << "Customer Name" << endl;
-    // cout << "First: ";
-    // cin >> c_name;
-    // cout << "Last: ";
-    // string temp = "";
-    // cin >> temp;
-    // c_name += " " + temp;
-    cout << endl;
-    ListItems();
-}
-
-//Signs employee into system to for recipt info/records
-void manager::SignIn()
-{
-    cout << "Enter employee ID" << endl;
-    cout << "(0 for new employee)" << endl;
-    cin >> id;
-    if (id == 0)
+    string temp = "";
+    
+    //Gets date only onece
+    if (!has_ran)
     {
-        NewEmployee();
-    }
-    else
-    {
-        //set up file string
-        stringstream ss;
-        ss << id;
-        string temp = ss.str();
-        temp += ".txt";
-        ifstream inFS(temp.c_str());
+        cout << "Welcome!" << endl;
         
-        while (!inFS.is_open())
-        {
-            inFS.close();
-            cout << "Didn't find employee.\nTry again: ";
-            cin >> id;
-            cout << id << endl;
-            stringstream a;
-            a << id;
-            temp = a.str();
-            temp += ".txt";
-            inFS.open (temp.c_str());
-        }
-        //Get Employee information
-        inFS >> employee;
-        inFS >> temp;
-        employee += " " + temp;
-    }
-}
-
-void manager::NewEmployee()
-{
-    //Get employee information
-    cout << "Enter your information..." << endl;
-    cout << "First name: ";
-    cin >> employee;
-    cout << "Last name: ";
-    string temp = " ";
-    cin >> temp;
-    employee += " " + temp;
-    
-    //set up employee id
-    temp = FindLatestID();
-    
-    //Create file for employee
-    ofstream off;
-    off.open(temp.c_str());
-    
-    
-    //Check if file was created successfully
-    if (!off.is_open())
-    {
-        cout << "Error creating employee file..." << endl;
+        //Get date
+        cout << "Enter date (mm/dd/yyyy): ";
+        cin >> date;
+        
+        has_ran = true;
+        
+        //Geta cashier information
+        cout << "Enter name." << endl;
+        cout << "First: ";
+        cin >> employee;
+        cout << "Last: ";
+        cin >> temp;
+        employee += ' ' + temp;
+        
+        //Gets customer information
+        cout << endl;
+        cout << "Enter customer name." << endl;
+        cout << "First: ";
+        cin >> c_name;
+        cout << "Last: ";
+        cin >> temp;
+        c_name += " " + temp;
+        ListItems();
     }
     else
     {
-        off << employee << endl;
-        off << id << endl;
-        cout << "Employee ID: " << id << endl;
+        //reset customer information
+        total = 0.00;
+        items = 0;
+    
+        //Gets customer information
+        cout << endl;
+        cout << "Enter customer name." << endl;
+        cout << "Enter 'q' to quit." << endl;
+        cout << "First: ";
+        cin >> c_name;
+        if (c_name == "q")
+        {
+            Quit();
+        }
+        else
+        {
+        cout << "Last: ";
+        cin >> temp;
+        c_name += " " + temp;
+        
+        //starts "register"
+        ListItems();
+        }
     }
 }
 
-//Lists purchasing options for customer
 void manager::ListItems()
 {
-    //list items
     cout << endl;
-    cout << "********************" << endl;
+    cout << "*******************" << endl;
     int i = 0;
     for (i = 0; i < num_products; i++)
     {
-        cout << i+1 << ": " << products[i];
+        cout << i+1 << ": " << products [i];
         cout << " $" << prices[i];
         cout << endl;
     }
-    cout << 'p' << ": Print Recipt" << endl;
-    cout << 'q' << ": Quit" << endl;
-    cout << "********************" << endl;
+    //special commands
+    cout << "P : Print Recipt" << endl;
+    cout << "Q : Quit" << endl;
+    cout << "******************" << endl;
     cout << endl;
-    
-    //Enter Item to purchase
-    char choice = '0';
+    char choice;
     cin >> choice;
-    
-    if (choice != 'q' && choice != 'p')
+    if (choice - '0' > 0 && choice - '0' <= num_products)
     {
-        //passes the index of the choice to use for arrays
-        BuyItem (choice - '0');
+        BuyItem(choice - '0');
+        ListItems();
     }
     else if (choice == 'p')
     {
+        DisplayRecipt();
         PrintRecipt();
-        CreateRecipt();
+        Initialize();
     }
     else if (choice == 'q')
     {
-        cout << "Goodbye..." << endl;
+        Quit();
     }
     else
     {
@@ -210,58 +158,43 @@ void manager::ListItems()
     }
 }
 
-//Purchase an item
 void manager::BuyItem(int p)
 {
     //sets p to be used as index
     p--;
-    //adds to items
+    
+    //adds customer items
     c_products[items] = products[p];
     c_prices[items] = prices[p];
+    
     items++;
-    
-    cout << products[p] <<" option selected." << endl;
-    
-    total += prices[p];
-    
-    cout << "Total: $" << total << endl;
-    ListItems();
-    // cout << "Will that be all..?(y/n) ";
-    // char c = 'a';
-    // cin >> c;
-    
-    // switch(c)
-    // {
-    //     case 'y':
-    //     recipt_num++;
-    //     PrintRecipt();
-    //     CreateRecipt();
-    //     break;
-        
-    //     case 'n':
-    //     ListItems();
-    //     break;
-        
-    //     default:
-    //     cout << "Try again..." << endl;
-    //     cin >> c;
-    //     break;
-    // }
-}
 
-//Print Recipt
-void manager::PrintRecipt()
-{
-    cout << endl;
-    cout << fixed << setprecision(2) << "RECIPT" << endl;
-    cout << c_name << endl;
-    cout << date << endl;
-    cout << recipt_num << endl << endl;
+    total += prices[p];
     
     for (int i = 0; i < items; i++)
     {
+        cout << i+1 << ". " << c_products[i] << " $" << c_prices[i] << endl;
+    }
+    cout << "total $" << total << endl;
+}
+
+void manager::DisplayRecipt()
+{
+    //set recipt number
+    recipt_num++;
+    
+    //print recipt
+    cout << endl;
+    cout << "******************************" << endl;
+    cout << fixed << setprecision(2) << "SALE" << endl;
+    cout << c_name << endl;
+    cout << date << endl;
+    cout << '#' << recipt_num << endl << endl;
+    
+    //print all items purchased and prices
+    for (int i = 0; i < items; i++)
+    {
         cout << c_products[i] << '-' << setw(24 - strlen(c_products[i].c_str())) << "$" << c_prices[i] << endl;
-        total += c_prices[i];
     }
     
     cout << endl << "Subtotal: " << setw(16) << "$" << total << endl;
@@ -269,46 +202,74 @@ void manager::PrintRecipt()
     cout << "Total:" << setw(20) << "$" << total + total * 0.0725 << endl;
     cout << endl;
     cout << "Cashier: " << employee << endl;
-    cout << "ID: " << id << endl;
+    cout << "******************************" << endl;
 }
 
-//Recipt HTML
-void manager::CreateRecipt()
+void manager::PrintRecipt()
 {
-    //html file
-    string f_name = "Recipt" + recipt_num;
-    f_name += ".html";
-    ofstream ofFS(f_name.c_str());
+    //create file stream for recipts
+    ofstream ofFS("reciptlog.txt", ios::app);
     
+    //check that file is open
     if (!ofFS.is_open())
     {
-        cout << "Error creating recipt" << endl;
+        cout << "Error loading reciptlog..." << endl;
     }
     else
     {
-        //Set up html page
-        string p = "<p>";
-        string pp = "</p>";
-        string h = "<h1>";
-        string hh = "</h1>";
-    
-        //write variable information
-        ofFS << "<!DOCTYPE HTML>\n<html>\n<title>";
-        ofFS << "Recipt";
-        ofFS << "</title></title>\n</head>\n<body>\n\n";
-        ofFS << h << "SALE" << hh << endl;
-        ofFS << p << c_name << pp << endl;
-        ofFS << p << date << pp << endl;
-        ofFS << p << recipt_num << pp << endl;
+        //output recipt
+        ofFS << endl;
+        ofFS << "******************************" << endl;
+        ofFS << fixed << setprecision(2) << "SALE" << endl;
+        ofFS << c_name << endl;
+        ofFS << date << endl;
+        ofFS << '#' << recipt_num << endl << endl;
+        
+        //print all items purchased and prices
         for (int i = 0; i < items; i++)
         {
-            ofFS << p << c_products[i] << '-' << setw(24 - strlen(c_products[i].c_str())) << "$" << c_prices[i] << pp << endl;
+            ofFS << c_products[i] << '-' << setw(24 - strlen(c_products[i].c_str())) << "$" << c_prices[i] << endl;
         }
-        ofFS << p << pp << endl;
-        ofFS << p << "Subtotal: $" << total << pp << endl;
-        ofFS << p << 
-        //close html file
-        ofFS << "</body>\n</html>";
-        ofFS.close();
+        
+        ofFS << endl << "Subtotal: " << setw(16) << "$" << total << endl;
+        ofFS << "Tax:" << setw(22) << "$" << total * 0.0725 << endl;
+        ofFS << "Total:" << setw(20) << "$" << total + total * 0.0725 << endl;
+        ofFS << endl;
+        ofFS << "Cashier: " << employee << endl;
+        ofFS << "******************************" << endl;
     }
+    
+    ofFS.close();
+}
+
+void manager::ChangeCashier()
+{
+    string temp = "";
+    
+    cout << endl;
+    cout << "Enter name." << endl;
+    cout << "First: ";
+    cin >> employee;
+    cout << "Last: ";
+    cin >> temp;
+    employee += ' ' + temp;
+}
+
+void manager::Quit()
+{
+    cout << "Goodbye..." << endl;
+    
+    //set latest recipt number
+    ofstream off("number.txt");
+    
+    if (!off.is_open())
+    {
+        cout << "Error opening reciptlog.." << endl;
+    }
+    else
+    {
+        off << recipt_num << endl;
+    }
+    
+    off.close();
 }
