@@ -11,7 +11,7 @@ using namespace std;
 manager::manager()
 {
     //store end
-    employee = "null";
+    employee_ = "null";
     has_ran = false;
     
     //load data
@@ -76,10 +76,10 @@ void manager::Initialize()
         //Geta cashier information
         cout << "Enter name." << endl;
         cout << "First: ";
-        cin >> employee;
+        cin >> employee_;
         cout << "Last: ";
         cin >> temp;
-        employee += ' ' + temp;
+        employee_ += ' ' + temp;
         
         //Gets customer information
         cout << endl;
@@ -201,7 +201,7 @@ void manager::DisplayRecipt()
     cout << "Tax:" << setw(22) << "$" << total * 0.0725 << endl;
     cout << "Total:" << setw(20) << "$" << total + total * 0.0725 << endl;
     cout << endl;
-    cout << "Cashier: " << employee << endl;
+    cout << "Cashier: " << employee_ << endl;
     cout << "******************************" << endl;
 }
 
@@ -235,7 +235,7 @@ void manager::PrintRecipt()
         ofFS << "Tax:" << setw(22) << "$" << total * 0.0725 << endl;
         ofFS << "Total:" << setw(20) << "$" << total + total * 0.0725 << endl;
         ofFS << endl;
-        ofFS << "Cashier: " << employee << endl;
+        ofFS << "Cashier: " << employee_ << endl;
         ofFS << "******************************" << endl;
     }
     
@@ -249,10 +249,10 @@ void manager::ChangeCashier()
     cout << endl;
     cout << "Enter name." << endl;
     cout << "First: ";
-    cin >> employee;
+    cin >> employee_;
     cout << "Last: ";
     cin >> temp;
-    employee += ' ' + temp;
+    employee_ += ' ' + temp;
 }
 
 void manager::Quit()

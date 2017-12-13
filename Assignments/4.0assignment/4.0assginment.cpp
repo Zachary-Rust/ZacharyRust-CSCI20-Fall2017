@@ -90,7 +90,7 @@ void student::PrintReport()
 int main ()
 {
     //Used for arrays
-    const int num_kids = 6;
+    const int num_kids = 1000;
     const int num_answers = 21;
     
     //Student variables
