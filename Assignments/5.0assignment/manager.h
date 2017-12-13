@@ -4,21 +4,21 @@ using namespace std;
 class manager{
     private:
     //store end
-    int recipt_num;
-    string company;
-    string employee;
-    int num_products;
-    string products[10];
-    double prices[10];
+    int recipt_num_;
+    string company_;
+    string employee_;
+    int num_products_;
+    string products_[10];
+    double prices_[10];
     bool has_ran;
     
     //customer end
-    string c_name;
-    string date;
-    double total;
-    int items;
-    string c_products[10];
-    double c_prices[10];
+    string c_name_;
+    string date_;
+    double total_;
+    int items_;
+    string c_products_[10];
+    double c_prices_[10];
     
     public:
     manager();

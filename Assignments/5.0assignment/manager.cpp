@@ -19,15 +19,15 @@ manager::manager()
     
     in.open("config.txt");
     
-    in >> company;
-    recipt_num = 1000;
-    in >> num_products;
+    in >> company_;
+    recipt_num_ = 1000;
+    in >> num_products_;
     
-    //gets all products & prices
-    for (int i = 0; i < num_products && !in.eof(); i++)
+    //gets all products & prices_
+    for (int i = 0; i < num_products_ && !in.eof(); i++)
     {
-        in >> products[i];
-        in >> prices[i];
+        in >> products_  [i];
+        in >> prices_[i];
         //checks user error if wrong number or products is in file
         if (in.eof())
         {
@@ -44,32 +44,32 @@ manager::manager()
     }
     else
     {
-    in >> recipt_num;
-    cout << "RECIPT NUMBER---  " << recipt_num << endl;
+    in >> recipt_num_;
+    cout << "RECIPT NUMBER---  " << recipt_num_ << endl;
     }
     
     in.close();
     
     //customer end
-    c_name = "";
-    date = "";
-    items = 0;
-    c_products[10];
-    c_prices[10];
+    c_name_ = "";
+    date_ = "";
+    items_ = 0;
+    c_products_  [10];
+    c_prices_[10];
 }
 
 void manager::Initialize()
 {
     string temp = "";
     
-    //Gets date only onece
+    //Gets date_ only onece
     if (!has_ran)
     {
         cout << "Welcome!" << endl;
         
-        //Get date
-        cout << "Enter date (mm/dd/yyyy): ";
-        cin >> date;
+        //Get date_
+        cout << "Enter date_ (mm/dd/yyyy): ";
+        cin >> date_;
         
         has_ran = true;
         
@@ -85,25 +85,25 @@ void manager::Initialize()
         cout << endl;
         cout << "Enter customer name." << endl;
         cout << "First: ";
-        cin >> c_name;
+        cin >> c_name_;
         cout << "Last: ";
         cin >> temp;
-        c_name += " " + temp;
+        c_name_ += " " + temp;
         ListItems();
     }
     else
     {
         //reset customer information
-        total = 0.00;
-        items = 0;
+        total_ = 0.00;
+        items_ = 0;
     
         //Gets customer information
         cout << endl;
         cout << "Enter customer name." << endl;
         cout << "Enter 'q' to quit." << endl;
         cout << "First: ";
-        cin >> c_name;
-        if (c_name == "q")
+        cin >> c_name_;
+        if (c_name_ == "q")
         {
             Quit();
         }
@@ -111,7 +111,7 @@ void manager::Initialize()
         {
         cout << "Last: ";
         cin >> temp;
-        c_name += " " + temp;
+        c_name_ += " " + temp;
         
         //starts "register"
         ListItems();
@@ -124,10 +124,10 @@ void manager::ListItems()
     cout << endl;
     cout << "*******************" << endl;
     int i = 0;
-    for (i = 0; i < num_products; i++)
+    for (i = 0; i < num_products_; i++)
     {
-        cout << i+1 << ": " << products [i];
-        cout << " $" << prices[i];
+        cout << i+1 << ": " << products_   [i];
+        cout << " $" << prices_[i];
         cout << endl;
     }
     //special commands
@@ -137,7 +137,7 @@ void manager::ListItems()
     cout << endl;
     char choice;
     cin >> choice;
-    if (choice - '0' > 0 && choice - '0' <= num_products)
+    if (choice - '0' > 0 && choice - '0' <= num_products_)
     {
         BuyItem(choice - '0');
         ListItems();
@@ -163,43 +163,43 @@ void manager::BuyItem(int p)
     //sets p to be used as index
     p--;
     
-    //adds customer items
-    c_products[items] = products[p];
-    c_prices[items] = prices[p];
+    //adds customer items_
+    c_products_  [items_] = products_  [p];
+    c_prices_[items_] = prices_[p];
     
-    items++;
+    items_++;
 
-    total += prices[p];
+    total_ += prices_[p];
     
-    for (int i = 0; i < items; i++)
+    for (int i = 0; i < items_; i++)
     {
-        cout << i+1 << ". " << c_products[i] << " $" << c_prices[i] << endl;
+        cout << i+1 << ". " << c_products_  [i] << " $" << c_prices_[i] << endl;
     }
-    cout << "total $" << total << endl;
+    cout << "total_ $" << total_ << endl;
 }
 
 void manager::DisplayRecipt()
 {
     //set recipt number
-    recipt_num++;
+    recipt_num_++;
     
     //print recipt
     cout << endl;
     cout << "******************************" << endl;
     cout << fixed << setprecision(2) << "SALE" << endl;
-    cout << c_name << endl;
-    cout << date << endl;
-    cout << '#' << recipt_num << endl << endl;
+    cout << c_name_ << endl;
+    cout << date_ << endl;
+    cout << '#' << recipt_num_ << endl << endl;
     
-    //print all items purchased and prices
-    for (int i = 0; i < items; i++)
+    //print all items_ purchased and prices_
+    for (int i = 0; i < items_; i++)
     {
-        cout << c_products[i] << '-' << setw(24 - strlen(c_products[i].c_str())) << "$" << c_prices[i] << endl;
+        cout << c_products_  [i] << '-' << setw(24 - strlen(c_products_  [i].c_str())) << "$" << c_prices_[i] << endl;
     }
     
-    cout << endl << "Subtotal: " << setw(16) << "$" << total << endl;
-    cout << "Tax:" << setw(22) << "$" << total * 0.0725 << endl;
-    cout << "Total:" << setw(20) << "$" << total + total * 0.0725 << endl;
+    cout << endl << "Subtotal_: " << setw(16) << "$" << total_ << endl;
+    cout << "Tax:" << setw(22) << "$" << total_ * 0.0725 << endl;
+    cout << "total_:" << setw(20) << "$" << total_ + total_ * 0.0725 << endl;
     cout << endl;
     cout << "Cashier: " << employee_ << endl;
     cout << "******************************" << endl;
@@ -221,19 +221,19 @@ void manager::PrintRecipt()
         ofFS << endl;
         ofFS << "******************************" << endl;
         ofFS << fixed << setprecision(2) << "SALE" << endl;
-        ofFS << c_name << endl;
-        ofFS << date << endl;
-        ofFS << '#' << recipt_num << endl << endl;
+        ofFS << c_name_ << endl;
+        ofFS << date_ << endl;
+        ofFS << '#' << recipt_num_ << endl << endl;
         
-        //print all items purchased and prices
-        for (int i = 0; i < items; i++)
+        //print all items_ purchased and prices_
+        for (int i = 0; i < items_; i++)
         {
-            ofFS << c_products[i] << '-' << setw(24 - strlen(c_products[i].c_str())) << "$" << c_prices[i] << endl;
+            ofFS << c_products_  [i] << '-' << setw(24 - strlen(c_products_  [i].c_str())) << "$" << c_prices_[i] << endl;
         }
         
-        ofFS << endl << "Subtotal: " << setw(16) << "$" << total << endl;
-        ofFS << "Tax:" << setw(22) << "$" << total * 0.0725 << endl;
-        ofFS << "Total:" << setw(20) << "$" << total + total * 0.0725 << endl;
+        ofFS << endl << "Subtotal_: " << setw(16) << "$" << total_ << endl;
+        ofFS << "Tax:" << setw(22) << "$" << total_ * 0.0725 << endl;
+        ofFS << "total_:" << setw(20) << "$" << total_ + total_ * 0.0725 << endl;
         ofFS << endl;
         ofFS << "Cashier: " << employee_ << endl;
         ofFS << "******************************" << endl;
@@ -268,7 +268,7 @@ void manager::Quit()
     }
     else
     {
-        off << recipt_num << endl;
+        off << recipt_num_ << endl;
     }
     
     off.close();
